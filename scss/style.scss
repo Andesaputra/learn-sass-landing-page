@@ -1,0 +1,73 @@
+// secara principle, scss bekerja sama seperti css
+// namun ada banyak format penulisan yang memudahkan kita dalam menulis coding
+@import 'config'; // untuk import file _config.scss
+@import 'utility';
+@import 'buttons';
+// semua file import bisa share file didalamnya satu sama lain
+
+* { //ini global modifier
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: $light-color;
+    font-family: $font-stack;
+    line-height: 1.6;
+}
+
+img { //ini juga jadi global modifier
+    width: 100%;
+}
+
+a { //ini juga global modifier
+    text-decoration: none;
+}
+
+.showcase {
+    @include set-background($primary-color); // ambil dari function mixin
+    height: 600px;
+
+    nav { //nav anak dari .showcase
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        ul { // ul anak dari nav anak dari .showcase
+            display: flex;
+            list-style-type: none;
+        }
+
+        li {
+            padding: 15px;
+        }
+
+        a { //ini hanya include di .showcase dan nav saja
+            color: set-text-color($primary-color);
+        }
+
+        a:hover { //ini hanya pengaruh di nav>li
+        color: $secondary-color;
+        }
+    }
+
+    &-content { //pake tanda & buat extend class .showcase karena satu lini class
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            width: 50%;
+        }
+
+        h1 {
+            font-size: 50px;
+            line-height: 1.2;
+        }
+    }
+}
+
+@import 'mobile'; // buat import media query
+// taro bawah aja karena biasanya ada disini

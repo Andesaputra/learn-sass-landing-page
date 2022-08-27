@@ -1,0 +1,30 @@
+//untuk utility
+
+.container {
+    max-width: 1100px;
+    padding: 0 30px;
+    margin: 0 auto;
+    overflow: auto;
+}
+
+//loop
+//margin & padding class
+$spaceamounts: (1,2,3,4,5); // variable
+
+@each $space in $spaceamounts { // loop function & $-sign to signify variable
+    .m-#{$space} { // literal buat gunain angka dr var space
+        margin: #{$space}rem; // properti dan unit
+    }
+
+    .my-#{$space} { // margin top & bottom
+        margin: #{$space}rem 0;
+    }
+
+    .p-#{$space} { // buat padding
+        padding: #{$space}rem; 
+    }
+
+    .y-#{$space} { // margin top & bottom
+        padding: #{$space}rem 0;
+    }
+}

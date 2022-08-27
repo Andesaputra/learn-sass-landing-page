@@ -1,0 +1,28 @@
+// _ didepan config gunanya untuk memberitahu compiler bahwa _config.scss adalah partial
+// maka akan di compile ke style.css, sama seperti style.scss
+
+// contoh file ini adalah untuk config file
+// dimana any var, mixin, function, ditaruh disini
+// agar dapat memecah codingan sehingga enak dibaca
+
+$font-stack: Arial, Helvetica, sans-serif; //root buat font
+$light-color: #f4f4f4; //root buat color
+$primary-color: #0e6cff;
+//$primary-color: #e0ffff;
+$secondary-color: #ff8700;
+
+// set text color base on background
+@function set-text-color($color) { // buat fungsi dengan paramater color, variable gunakan $
+    @if(lightness($color) > 70) {
+        @return #333;
+    } @else {
+        @return #fff;
+    }
+}
+
+// mixin function
+// Set background & text color
+@mixin set-background($color) {
+    background-color: $color;
+    color: set-text-color($color);
+}
